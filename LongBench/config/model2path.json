@@ -6,5 +6,10 @@
     "chatglm2-6b": "THUDM/chatglm2-6b",
     "chatglm2-6b-32k": "THUDM/chatglm2-6b-32k",
     "chatglm3-6b-32k": "THUDM/chatglm3-6b-32k",
-    "vicuna-v1.5-7b-16k": "lmsys/vicuna-7b-v1.5-16k"
+    "vicuna-v1.5-7b-16k": "lmsys/vicuna-7b-v1.5-16k",
+    "bamba-sft-2.1T_finemath": "/dccstor/eval-fms/models/instruct_models/tuluv3/2.1T_finemath/lr1e_6_finemath_wd_0_gbs_16-hf",
+    "meta-llama/Llama-3.1-8B-Instruct": "meta-llama/Llama-3.1-8B-Instruct",
+    "Qwen/Qwen2.5-7B-Instruct": "Qwen/Qwen2.5-7B-Instruct",
+    "Zyphra/Zamba2-7B-Instruct": "Zyphra/Zamba2-7B-Instruct",
+    "tiiuae/Falcon3-Mamba-7B-Instruct": "tiiuae/Falcon3-Mamba-7B-Instruct"
 }

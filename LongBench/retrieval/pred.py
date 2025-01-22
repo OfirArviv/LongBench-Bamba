@@ -35,6 +35,9 @@ def build_chat(tokenizer, prompt, model_name):
         prompt = header + f" ### Human: {prompt}\n###"
     elif "internlm" in model_name:
         prompt = f"<|User|>:{prompt}<eoh>\n<|Bot|>:"
+    else:
+        chat = [{"role": "user", "content": prompt}]
+        prompt = tokenizer.apply_chat_template(chat, tokenize=False)
     return prompt
 
 def get_pred(model, tokenizer, data, max_length, max_gen, prompt_format, dataset, device, model_name, args):
