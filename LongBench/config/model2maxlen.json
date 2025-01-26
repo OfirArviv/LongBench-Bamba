@@ -7,9 +7,10 @@
     "chatglm2-6b-32k": 31500,
     "chatglm3-6b-32k": 31500,
     "vicuna-v1.5-7b-16k": 15500,
-    "bamba-sft-2.1T_finemath": 5,
+    "bamba-sft-2.1T_finemath": 128000,
     "meta-llama/Llama-3.1-8B-Instruct": 128000,
     "Qwen/Qwen2.5-7B-Instruct": 131072,
     "Zyphra/Zamba2-7B-Instruct": 16000,
-    "tiiuae/Falcon3-Mamba-7B-Instruct": 8192
+    "tiiuae/Falcon3-Mamba-7B-Instruct": 8192,
+    "google/recurrentgemma-9b-it": 16000
 }
