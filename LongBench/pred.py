@@ -2,7 +2,7 @@ import os
 from datasets import load_dataset
 import torch
 import json
-from transformers import AutoTokenizer, LlamaTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, LlamaTokenizer, LlamaForCausalLM, AutoModelForCausalLM
 from tqdm import tqdm
 import numpy as np
 import random
@@ -133,7 +133,7 @@ def load_model_and_tokenizer(path, model_name, device):
         tokenizer = AutoTokenizer.from_pretrained(path, trust_remote_code=True)
         model = AutoModelForCausalLM.from_pretrained(path, trust_remote_code=True, torch_dtype=torch.bfloat16).to(device)
         if "bamba" in model_name:
-            print(model.max_position_embeddings)
+            print(model.config.max_position_embeddings)
             model.max_position_embeddings = 4096
 
     model = model.eval()
