@@ -111,30 +111,30 @@ def load_model_and_tokenizer(path, model_name, device):
     if "chatglm" in model_name or "internlm" in model_name or "xgen" in model_name:
         tokenizer = AutoTokenizer.from_pretrained(path, trust_remote_code=True)
         model = AutoModelForCausalLM.from_pretrained(path, trust_remote_code=True, torch_dtype=torch.bfloat16).to(device)
-    elif "llama2" in model_name:
-        replace_llama_attn_with_flash_attn()
-        tokenizer = LlamaTokenizer.from_pretrained(path)
-        model = LlamaForCausalLM.from_pretrained(path, torch_dtype=torch.bfloat16).to(device)
-    elif "longchat" in model_name or "vicuna" in model_name:
-        from fastchat.model import load_model
-        replace_llama_attn_with_flash_attn()
-        model, _ = load_model(
-            path,
-            device='cpu',
-            num_gpus=0,
-            load_8bit=False,
-            cpu_offloading=False,
-            debug=False,
-        )
-        model = model.to(device)
-        model = model.bfloat16()
-        tokenizer = AutoTokenizer.from_pretrained(path, trust_remote_code=True, use_fast=False)
+        """elif "llama2" in model_name:
+            replace_llama_attn_with_flash_attn()
+            tokenizer = LlamaTokenizer.from_pretrained(path)
+            model = LlamaForCausalLM.from_pretrained(path, torch_dtype=torch.bfloat16).to(device)
+        elif "longchat" in model_name or "vicuna" in model_name:
+            from fastchat.model import load_model
+            replace_llama_attn_with_flash_attn()
+            model, _ = load_model(
+                path,
+                device='cpu',
+                num_gpus=0,
+                load_8bit=False,
+                cpu_offloading=False,
+                debug=False,
+            )
+            model = model.to(device)
+            model = model.bfloat16()
+            tokenizer = AutoTokenizer.from_pretrained(path, trust_remote_code=True, use_fast=False)"""
     else:
         tokenizer = AutoTokenizer.from_pretrained(path, trust_remote_code=True)
         model = AutoModelForCausalLM.from_pretrained(path, trust_remote_code=True, torch_dtype=torch.bfloat16).to(device)
         if "bamba" in model_name:
             print(model.config.max_position_embeddings)
-            model.max_position_embeddings = 4096
+            model.config.max_position_embeddings = 4096
 
     model = model.eval()
     return model, tokenizer
