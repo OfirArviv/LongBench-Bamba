@@ -9,9 +9,10 @@ dataset_dict = defaultdict(list)
 for dataset in datasets:
     data = load_dataset('THUDM/LongBench', f"{dataset}_e", split='test')
     for row in data:
-        if row['length'] < 4000:
-            dataset_dict[dataset].append(row['length'])
+        #if row['length'] < 4000:
+        dataset_dict[dataset].append(row['length'])
 
 for dataset in datasets:
     print(f"{dataset} mean: {np.mean(dataset_dict[dataset])}")
+    print(f"{dataset} max: {np.max(dataset_dict[dataset])}")
     # print(f"{dataset} median: {np.median(dataset_dict[dataset])}")
