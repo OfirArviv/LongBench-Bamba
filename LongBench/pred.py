@@ -18,6 +18,7 @@ def parse_args(args=None):
     return parser.parse_args(args)
 
 # This is the customized building prompt for chat models
+def build_chat(tokenizer, prompt, model_name):
     if "chatglm3" in model_name:
         prompt = tokenizer.build_chat_input(prompt)
         '''
